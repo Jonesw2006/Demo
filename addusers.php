@@ -1,5 +1,7 @@
 
 <?php
+header('Location: users.php');
+array_map("htmlspecialchars", $_POST)
 include_once("connection.php"); 
 switch($_POST["role"]){
 	case "Pupil":
@@ -12,6 +14,16 @@ switch($_POST["role"]){
 		$role=2;
 		break;
 }
+
+$stmt->bindParam(':forename', $_POST[“forename”]);
+$stmt->bindParam(':surname', $_POST[“surname”]);
+$stmt->bindParam(':house', $_POST[“house”]);
+$stmt->bindParam(':year', $_POST[“year”]);
+$stmt->bindParam(':password', $_POST[“passwd”]);
+$stmt->bindParam(':gender', $_POST[“gender”]);
+$stmt->bindParam(':role', $role);
+$stmt->execute();
+$conn=null;
 
 print_r($_POST);
 echo $_POST["gender"]."<br>";
