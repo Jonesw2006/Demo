@@ -1,6 +1,6 @@
 
 <?php
-//header('Location: users.php');
+header('Location: users.php');
 array_map("htmlspecialchars", $_POST);
 include_once("connection.php"); 
 switch($_POST["role"]){
